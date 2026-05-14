@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research themes in impact-based forecasting, hydrological extremes, machine learning, and vulnerability assessment.">
+  <title>Research | Akshay Singhal</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      color: #4a4f54;
+    }
+
+    .page-title {
+      max-width: 900px;
+      padding-bottom: 24px;
+      font-size: 1.125rem;
+      line-height: 1.72;
+    }
+
+    .page-title h1,
+    main h2 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .research-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+      font-size: 1.125rem;
+      line-height: 1.72;
+    }
+
+    .research-section h2 {
+      margin-top: 34px;
+      margin-bottom: 12px;
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .pillar-title {
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+
+    .research-section h2 + p + .pillar-title {
+      margin-top: 68px;
+    }
+
+    .pillar-question {
+      color: #65717a;
+      font-weight: 400;
+      font-style: italic;
+      margin-top: 0;
+      margin-bottom: 18px;
+    }
+
+    .pillar-block {
+      margin-top: 92px;
+      padding-left: 22px;
+      border-left: 3px solid var(--rule);
+    }
+
+    .research-section h2 + p + .pillar-block {
+      margin-top: 68px;
+    }
+
+    .research-flow {
+      margin: 28px 0 76px;
+      padding: 24px 0 4px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .research-flow-title {
+      margin: 0 0 18px;
+      color: #4a4f54;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 14px 12px;
+      border: 1px solid #d8dee3;
+      border-left: 3px solid #7f98ad;
+      background: #fbfcfd;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: ">";
+      position: absolute;
+      top: 50%;
+      right: -14px;
+      transform: translateY(-50%);
+      color: #7f8a93;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .flow-step:nth-child(4) {
+      border-left-color: #a33a3a;
+    }
+
+    .flow-step:nth-child(5) {
+      border-left-color: #6f7f55;
+    }
+
+    .flow-step-title {
+      display: block;
+      margin-bottom: 8px;
+      color: #394047;
+      font-size: 0.96rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .flow-step-text {
+      margin: 0;
+      color: #5f6870;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .pillar-block + .pillar-block {
+      border-top: 1px solid var(--rule);
+      padding-top: 34px;
+    }
+
+    .pillar-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .selected-publications {
+      color: #5f6870;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-top: 18px;
+    }
+
+    .selected-publications-label {
+      color: #4a4f54;
+      font-weight: 700;
+    }
+
+    .publication-title {
+      color: inherit;
+    }
+
+    .publication-title:hover,
+    .publication-title:focus {
+      color: inherit;
+    }
+
+    @media (max-width: 560px) {
+      .research-section {
+        padding: 0 18px 52px;
+      }
+
+      .flow-steps {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .flow-step:not(:last-child)::after {
+        content: "";
+        left: 22px;
+        right: auto;
+        top: auto;
+        bottom: -12px;
+        width: 1px;
+        height: 12px;
+        background: #d8dee3;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Akshay Singhal</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <h1>Research Focus</h1>
+      <p>My research focuses on understanding, predicting, and communicating the impacts of hydrological extremes, especially floods, by integrating physical hydrology, machine learning, geospatial analysis, and societal information. I am particularly interested in how hazard, exposure, vulnerability, and impact interact across space and time, and how this knowledge can support improved forecasting, planning, and disaster decision-making.</p>
+      <p>A central goal of my work is to move hydrological forecasting beyond the prediction of physical hazards alone. Rainfall intensity, streamflow magnitude, and flood depth are important, but they do not directly explain who is affected, where damages occur, which systems are disrupted, or which communities require early action. My research therefore develops impact-based assessment and forecasting frameworks that translate hydro-meteorological information into actionable estimates of real-world consequences.</p>
+    </section>
+
+    <section class="research-section">
+      <h2>Research Pillars</h2>
+      <p>My research is organized around a simple progression: improving hydroclimatic information, understanding who and what is vulnerable, and translating this knowledge into impact-based forecasts and decisions.</p>
+      <figure class="research-flow" aria-label="Impact-Based Hydrological Forecasting Framework">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <span class="flow-step-title">Hydroclimatic Information</span>
+            <p class="flow-step-text">Rainfall, streamflow, forecasts, downscaled data</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-step-title">Hazard Modeling</span>
+            <p class="flow-step-text">Flood depth, inundation, extreme rainfall, hydrological simulations</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-step-title">Exposure &amp; Vulnerability</span>
+            <p class="flow-step-text">People, infrastructure, land use, adaptive capacity</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-step-title">Impact Intelligence</span>
+            <p class="flow-step-text">Damage, disruption, displacement, reported impacts, NLP extraction</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-step-title">Decision Support</span>
+            <p class="flow-step-text">Early warning, preparedness, planning, equitable response</p>
+          </div>
+        </div>
+      </figure>
+      <div class="pillar-block">
+        <p class="pillar-title">1. Hydroclimatic Forecasting and Data Generation</p>
+      <p class="pillar-question">How can reliable hydroclimatic information be generated in data-scarce and hazard-prone regions?</p>
+      <p>Many regions vulnerable to floods, avalanches, and glacier-related hazards lack reliable high-resolution precipitation, temperature, and forecast data. This limitation is especially important in mountainous and river-basin environments, where weather conditions vary sharply over space and time.</p>
+      <p>My work addresses this challenge by developing statistical, geostatistical, and network-based methods for downscaling, spatial extrapolation, temporal disaggregation, forecast correction, ensemble generation, and analysis of extreme precipitation connectivity. These methods help transform coarse, biased, or incomplete hydroclimatic data into more useful information for hazard assessment, hydrological modeling, and early warning applications.</p>
+      <p class="selected-publications"><span class="selected-publications-label">Selected publications:</span> <a class="publication-title" href="https://doi.org/10.1002/joc.7342">MPS downscaling in the Himalayas</a> &middot; <a class="publication-title" href="https://doi.org/10.1016/j.envsoft.2022.105317">Spatial extrapolation for glacier sites</a> &middot; <a class="publication-title" href="https://doi.org/10.1016/j.jhydrol.2022.128795">Forecast correction and ensemble generation</a> &middot; <a class="publication-title" href="https://doi.org/10.1016/j.atmosres.2022.106538">Complex networks of extreme rainfall</a> &middot; <a class="publication-title" href="https://doi.org/10.1007/s00477-026-03179-1">Hourly precipitation disaggregation</a></p>
+      </div>
+      <div class="pillar-block">
+        <p class="pillar-title">2. Vulnerability, Risk, and Monitoring Systems</p>
+      <p class="pillar-question">Why do similar hydrological hazards produce different levels of damage across places?</p>
+      <p>Floods, avalanches, and extreme rainfall events do not affect all regions equally. The severity of impact depends not only on the hazard itself, but also on exposure, sensitivity, adaptive capacity, infrastructure, land use, and social conditions. Understanding these differences is essential for identifying where risk is concentrated and where interventions are most needed.</p>
+      <p>My work develops indicator-based, geospatial, and network-based approaches to assess vulnerability, identify priority regions for adaptation, and improve hydrological monitoring systems. This includes agricultural vulnerability assessment, avalanche vulnerability mapping, urban flood vulnerability analysis, phase-wise adaptation planning, and identification of critical streamflow and sediment monitoring locations.</p>
+      <p class="selected-publications"><span class="selected-publications-label">Selected publications:</span> <a class="publication-title" href="https://doi.org/10.1016/j.ijdrr.2021.102469">Agricultural vulnerability and adaptation</a> &middot; <a class="publication-title" href="https://doi.org/10.1007/s10668-025-06015-8">Avalanche vulnerability in the Himalayas</a> &middot; <a class="publication-title" href="https://doi.org/10.1016/j.uclim.2025.102536">Urban flood vulnerability in Mumbai</a> &middot; <a class="publication-title" href="https://doi.org/10.1007/s11269-023-03675-x">Hydrologic monitoring network design</a></p>
+      </div>
+      <div class="pillar-block">
+        <p class="pillar-title">3. Impact-Based Forecasting and Disaster Impact Intelligence</p>
+      <p class="pillar-question">How can hydrological forecasts be translated into actionable information about real-world consequences?</p>
+      <p>Traditional forecasts often describe rainfall, streamflow, or flood depth, but they do not directly explain who may be affected, which systems may fail, or what emergency actions are needed. Impact-based forecasting aims to close this gap by connecting hazard information with exposure, vulnerability, and observed impacts.</p>
+      <p>My work develops impact-based forecasting and disaster impact intelligence frameworks that integrate rainfall forecasts, socio-economic data, vulnerability information, decision-making experiments, and natural language processing. This includes district-level impact-based forecasts, warning matrices, serious-game experiments for flood decision-making, and BERT-based extraction of flood impacts from news articles at neighborhood scale.</p>
+      <p class="selected-publications"><span class="selected-publications-label">Selected publications:</span> <a class="publication-title" href="https://doi.org/10.3389/feart.2022.846113">District-level impact-based forecasting</a> &middot; <a class="publication-title" href="https://doi.org/10.5194/hess-29-947-2025">Flood decision-making serious game</a> &middot; <a class="publication-title" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2025WR041451">NLP-based flood impact extraction</a></p>
+      </div>
+
+      <h2>Future Research Vision</h2>
+      <p>A major direction of my future work is to integrate physical hydrological modeling, machine learning, geospatial data, vulnerability information, and real-time impact observations into a unified forecasting-to-action framework. This includes developing methods that can combine flood forecasts with exposure and vulnerability datasets, historical disaster impacts, remote sensing, social signals, and text-based information from news or reports. Such integration can help identify not only where flooding may occur, but also where damages are likely to be severe, which communities may require early action, and what types of response measures may be most useful.</p>
+      <p>In the coming years, I plan to develop research around four connected themes: impact-based flood forecasting for Indian cities, AI and NLP-based disaster impact monitoring, dynamic vulnerability and exposure assessment, and forecast-to-action decision-support systems. Together, these directions aim to make hydrological science more actionable by linking hazards with real-world consequences and practical decisions for risk reduction.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Akshay Singhal</p>
+      <p><a href="publications.html">Publications</a></p>
+    </div>
+  </footer>
+</body>
+</html>
+
