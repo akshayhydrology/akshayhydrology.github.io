@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple research note explaining impact-based flood forecasting with examples of hazard, exposure, vulnerability, impacts, and early action.">
+  <title>What Is Impact-Based Flood Forecasting? | Akshay Singhal</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      color: #4a4f54;
+    }
+
+    .post-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 46px 24px 80px;
+    }
+
+    .post-header {
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .post-kicker,
+    .figure-label,
+    .mini-label {
+      color: #a2141a;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .post-header h1 {
+      max-width: 880px;
+      margin-top: 12px;
+      color: #2f353a;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.08;
+    }
+
+    .post-subtitle {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: #59636c;
+      font-size: 1.12rem;
+      line-height: 1.72;
+    }
+
+    .post-meta {
+      margin-top: 18px;
+      color: #6b747c;
+      font-size: 0.94rem;
+    }
+
+    .post-content {
+      max-width: 840px;
+      margin-top: 34px;
+    }
+
+    .post-content h2 {
+      margin: 42px 0 14px;
+      color: #2f353a;
+      font-size: 1.22rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .post-content p,
+    .post-content li {
+      color: #4e5961;
+      font-size: 1.06rem;
+      line-height: 1.82;
+    }
+
+    .post-content p {
+      margin: 0 0 18px;
+    }
+
+    .takeaway {
+      margin: 28px 0;
+      padding: 18px 20px;
+      border-left: 4px solid #a2141a;
+      background: #fbfcfd;
+      color: #394047;
+      font-size: 1.12rem;
+      line-height: 1.7;
+    }
+
+    .concept-figure {
+      margin: 32px 0;
+      padding: 20px;
+      border: 1px solid var(--rule);
+      background: #fbfcfd;
+    }
+
+    .impact-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .flow-step {
+      min-height: 128px;
+      padding: 14px;
+      border: 1px solid #d9dee3;
+      background: #fff;
+    }
+
+    .flow-step strong {
+      display: block;
+      color: #2f353a;
+      font-size: 0.98rem;
+      line-height: 1.25;
+    }
+
+    .flow-step span {
+      display: block;
+      margin-top: 10px;
+      color: #63707a;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .flow-step:nth-child(1) { border-top: 4px solid #123f6d; }
+    .flow-step:nth-child(2) { border-top: 4px solid #0d6b6f; }
+    .flow-step:nth-child(3) { border-top: 4px solid #9a6b16; }
+    .flow-step:nth-child(4) { border-top: 4px solid #a2141a; }
+    .flow-step:nth-child(5) { border-top: 4px solid #657f45; }
+
+    .figure-caption {
+      margin: 14px 0 0;
+      color: #6a737b;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 18px;
+      margin: 28px 0;
+    }
+
+    .scenario-tabs {
+      display: grid;
+      gap: 9px;
+    }
+
+    .scenario-tabs button {
+      border: 1px solid #d9dee3;
+      background: #fff;
+      color: #394047;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      padding: 12px 14px;
+      text-align: left;
+    }
+
+    .scenario-tabs button.active,
+    .scenario-tabs button:hover,
+    .scenario-tabs button:focus {
+      border-left: 4px solid #a2141a;
+      background: #fbfcfd;
+      outline: none;
+    }
+
+    .scenario-panel {
+      border: 1px solid #d9dee3;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .scenario-panel h3 {
+      margin: 4px 0 10px;
+      color: #2f353a;
+      font-size: 1.08rem;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .scenario-card {
+      padding: 12px;
+      background: #fbfcfd;
+      border-top: 3px solid #d9dee3;
+    }
+
+    .scenario-card strong {
+      display: block;
+      color: #394047;
+      font-size: 0.9rem;
+    }
+
+    .scenario-card span {
+      display: block;
+      margin-top: 6px;
+      color: #64707a;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .example-box {
+      margin: 26px 0;
+      padding: 18px 20px;
+      border: 1px solid var(--rule);
+      background: #fff;
+    }
+
+    .example-box h3 {
+      margin: 0 0 10px;
+      color: #2f353a;
+      font-size: 1rem;
+    }
+
+    .key-list {
+      padding-left: 22px;
+    }
+
+    .post-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .post-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid #a2141a;
+      color: #fff;
+      background: #a2141a;
+      font-weight: 700;
+    }
+
+    .post-nav a.secondary {
+      color: #a2141a;
+      background: #fff;
+    }
+
+    .post-nav a:hover,
+    .post-nav a:focus {
+      color: #fff;
+      background: #7f0f19;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .impact-flow,
+      .comparison,
+      .scenario-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Akshay Singhal</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="impact-portal.html">Impact Portal</a>
+        <a href="publications.html">Publications</a>
+        <a href="blogs.html" aria-current="page">Blogs</a>
+        <a href="news.html">News</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="post-wrap">
+    <article>
+      <header class="post-header">
+        <span class="post-kicker">Research Note</span>
+        <h1>What Is Impact-Based Flood Forecasting?</h1>
+        <p class="post-subtitle">A simple guide to moving from “how much water is coming?” to “who may be affected, what may be disrupted, and what action is needed?”</p>
+        <p class="post-meta">Akshay Singhal · Hydrology, AI, and disaster impact intelligence</p>
+      </header>
+
+      <div class="post-content">
+        <p>Flood forecasts are usually built around physical information. They may tell us how much rain is expected, how high a river may rise, or which area may be inundated. This information is important. But by itself, it does not always tell people what they should do.</p>
+
+        <p>For example, 100 mm of rainfall over an empty field is very different from 100 mm of rainfall over a crowded neighborhood with poor drainage, hospitals, schools, and busy roads. The rain may be the same, but the consequences can be completely different.</p>
+
+        <div class="takeaway"><strong>Impact-based flood forecasting</strong> tries to forecast the likely consequences of flooding, not only the flood hazard itself.</div>
+
+        <section class="concept-figure" aria-label="Impact-based flood forecasting framework">
+          <span class="figure-label">Core idea</span>
+          <div class="impact-flow">
+            <div class="flow-step">
+              <strong>Hazard</strong>
+              <span>Rainfall, river flow, flood depth, or inundation.</span>
+            </div>
+            <div class="flow-step">
+              <strong>Exposure</strong>
+              <span>People, buildings, roads, farms, and infrastructure in harm's way.</span>
+            </div>
+            <div class="flow-step">
+              <strong>Vulnerability</strong>
+              <span>How sensitive or prepared those exposed systems are.</span>
+            </div>
+            <div class="flow-step">
+              <strong>Impact</strong>
+              <span>Damage, disruption, displacement, delays, or service failures.</span>
+            </div>
+            <div class="flow-step">
+              <strong>Action</strong>
+              <span>Warnings, evacuation, road closures, pumps, shelters, or planning.</span>
+            </div>
+          </div>
+          <p class="figure-caption">Figure 1. A flood becomes a disaster only when a hazard interacts with exposed and vulnerable people, places, and systems.</p>
+        </section>
+
+        <h2>Hazard is not the same as impact</h2>
+        <p>A hazard describes the physical event. In flood science, this may be rainfall intensity, river discharge, water level, or flood depth. An impact describes what happens because of that hazard.</p>
+
+        <div class="example-box">
+          <h3>Simple example</h3>
+          <p>A forecast says: “The river may rise above danger level tomorrow.” That is a hazard forecast.</p>
+          <p>An impact-based forecast goes further: “Two low-lying neighborhoods may face road closures, school access may be disrupted, and elderly residents near the river may need early assistance.”</p>
+        </div>
+
+        <h2>Same rainfall, different consequences</h2>
+        <p>The same rainfall amount can create very different outcomes depending on where it falls. Click the examples below.</p>
+
+        <section class="comparison" aria-label="Interactive rainfall impact comparison">
+          <div class="scenario-tabs">
+            <button class="active" type="button" data-scenario="field">Open field</button>
+            <button type="button" data-scenario="city">Dense city</button>
+            <button type="button" data-scenario="mountain">Mountain road</button>
+          </div>
+          <div class="scenario-panel" aria-live="polite">
+            <span class="mini-label">Example</span>
+            <h3 id="scenario-title">Open field</h3>
+            <p id="scenario-text">Heavy rainfall may cause temporary ponding, but fewer people and assets are directly exposed.</p>
+            <div class="scenario-grid">
+              <div class="scenario-card">
+                <strong>Exposure</strong>
+                <span id="scenario-exposure">Low population and limited infrastructure.</span>
+              </div>
+              <div class="scenario-card">
+                <strong>Likely impact</strong>
+                <span id="scenario-impact">Waterlogging and possible crop stress.</span>
+              </div>
+              <div class="scenario-card">
+                <strong>Useful action</strong>
+                <span id="scenario-action">Monitor fields and drainage channels.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <h2>What information is needed?</h2>
+        <p>Impact-based flood forecasting needs more than a weather forecast. It combines physical hazard information with information about people, places, and systems.</p>
+
+        <ul class="key-list">
+          <li><strong>Hazard data:</strong> rainfall forecasts, river levels, flood maps, streamflow, and inundation estimates.</li>
+          <li><strong>Exposure data:</strong> population, buildings, roads, hospitals, schools, crops, and power systems.</li>
+          <li><strong>Vulnerability data:</strong> drainage conditions, housing quality, social sensitivity, preparedness, and adaptive capacity.</li>
+          <li><strong>Impact data:</strong> past flood damage, road closures, displacement, emergency reports, news articles, and local observations.</li>
+        </ul>
+
+        <h2>Why does this matter?</h2>
+        <p>People rarely make decisions based on rainfall numbers alone. A mayor, emergency manager, school administrator, or household wants to know what the forecast means for their situation.</p>
+
+        <p>Impact-based forecasting can support questions such as:</p>
+        <ul class="key-list">
+          <li>Which neighborhoods may be affected first?</li>
+          <li>Which roads or services may fail?</li>
+          <li>Where should emergency teams be placed?</li>
+          <li>Who may need early warning or assistance?</li>
+          <li>What action should be taken before flooding starts?</li>
+        </ul>
+
+        <h2>Where does AI fit in?</h2>
+        <p>AI can help when the amount of information is too large or too messy for manual analysis. Machine learning can learn patterns between rainfall, flood conditions, and past impacts. Natural Language Processing can extract useful information from news reports, emergency updates, or social text.</p>
+
+        <p>For example, after a flood, news articles may mention “basement flooding,” “road closures,” “power outages,” or “evacuations.” NLP methods can help convert these reports into structured impact information that can be mapped and studied.</p>
+
+        <h2>The main idea</h2>
+        <p>A good flood forecast should not stop at water. It should help people understand consequences and take action.</p>
+
+        <div class="takeaway">Impact-based flood forecasting connects <strong>what the water may do</strong> with <strong>who and what may be affected</strong>, so that warnings become more useful, targeted, and actionable.</div>
+
+        <div class="post-nav">
+          <a href="blogs.html">Back to Blogs</a>
+          <a class="secondary" href="research.html">Research Page</a>
+          <a class="secondary" href="impact-portal.html">Impact Portal</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Akshay Singhal</p>
+      <p><a href="publications.html">Publications</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const scenarios = {
+      field: {
+        title: 'Open field',
+        text: 'Heavy rainfall may cause temporary ponding, but fewer people and assets are directly exposed.',
+        exposure: 'Low population and limited infrastructure.',
+        impact: 'Waterlogging and possible crop stress.',
+        action: 'Monitor fields and drainage channels.'
+      },
+      city: {
+        title: 'Dense city',
+        text: 'The same rainfall may overwhelm drainage, block roads, and affect many people within a small area.',
+        exposure: 'High population, roads, shops, schools, and underground spaces.',
+        impact: 'Traffic disruption, property damage, unsafe travel, and service delays.',
+        action: 'Issue local alerts, close risky roads, prepare pumps, and protect critical facilities.'
+      },
+      mountain: {
+        title: 'Mountain road',
+        text: 'Heavy rainfall over steep terrain can trigger fast runoff, landslides, or road blockages.',
+        exposure: 'Small population, but limited access routes and isolated communities.',
+        impact: 'Road closure, slope failure, delayed rescue, and supply disruption.',
+        action: 'Monitor slopes, alert travelers, and keep emergency access routes ready.'
+      }
+    };
+
+    document.querySelectorAll('.scenario-tabs button').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.scenario-tabs button').forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        const selected = scenarios[button.dataset.scenario];
+        document.getElementById('scenario-title').textContent = selected.title;
+        document.getElementById('scenario-text').textContent = selected.text;
+        document.getElementById('scenario-exposure').textContent = selected.exposure;
+        document.getElementById('scenario-impact').textContent = selected.impact;
+        document.getElementById('scenario-action').textContent = selected.action;
+      });
+    });
+  </script>
+</body>
+</html>
