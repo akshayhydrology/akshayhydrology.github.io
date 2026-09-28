@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research notes by Akshay Singhal on impact-based flood forecasting, hydrological extremes, vulnerability, machine learning, and disaster impact intelligence.">
+  <title>Blogs | Akshay Singhal</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      color: #4a4f54;
+    }
+
+    .blog-hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 56px 24px 34px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .blog-kicker {
+      display: block;
+      margin-bottom: 12px;
+      color: #a2141a;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .blog-hero h1 {
+      max-width: 900px;
+      color: #2f353a;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.08;
+    }
+
+    .blog-hero p {
+      max-width: 780px;
+      margin: 20px 0 0;
+      color: #5a646d;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .blog-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 36px 24px 76px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .feature-note {
+      position: relative;
+      min-height: 360px;
+      padding: 28px;
+      border: 1px solid var(--rule);
+      background:
+        linear-gradient(90deg, rgba(162, 20, 26, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(11, 94, 107, 0.08) 1px, transparent 1px),
+        #fbfcfd;
+      background-size: 44px 44px;
+      overflow: hidden;
+    }
+
+    .feature-note::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 260px;
+      height: 260px;
+      border: 34px solid rgba(162, 20, 26, 0.09);
+      border-radius: 50%;
+    }
+
+    .note-status,
+    .topic-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #6b747c;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .feature-note h2 a {
+      color: inherit;
+    }
+
+    .feature-note h2 a:hover,
+    .feature-note h2 a:focus {
+      color: #a2141a;
+      text-decoration: none;
+    }
+
+    .feature-note h2 {
+      position: relative;
+      max-width: 620px;
+      margin: 0 0 18px;
+      color: #2f353a;
+      font-size: clamp(1.7rem, 3vw, 2.55rem);
+      line-height: 1.12;
+      text-decoration: none;
+      z-index: 1;
+    }
+
+    .feature-note p {
+      position: relative;
+      max-width: 620px;
+      margin: 0;
+      color: #55616a;
+      font-size: 1.04rem;
+      line-height: 1.72;
+      z-index: 1;
+    }
+
+    .concept-flow {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .concept-flow span {
+      padding: 8px 10px;
+      border: 1px solid #d9dee3;
+      background: #fff;
+      color: #394047;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .side-panel {
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+    }
+
+    .side-panel h2,
+    .blog-section h2 {
+      margin: 0 0 16px;
+      color: #2f353a;
+      font-size: 1.12rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .topic-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .topic-list li {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .topic-list strong {
+      display: block;
+      color: #394047;
+      font-size: 0.98rem;
+      line-height: 1.35;
+    }
+
+    .topic-list span {
+      display: block;
+      margin-top: 4px;
+      color: #6a737b;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .blog-section {
+      margin-top: 42px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .note-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .note-card {
+      min-height: 210px;
+      padding: 18px;
+      border: 1px solid var(--rule);
+      background: #fff;
+    }
+
+    .note-card h3 {
+      margin: 0 0 12px;
+      color: #2f353a;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: #5f6870;
+      font-size: 0.94rem;
+      line-height: 1.58;
+    }
+
+    .blog-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .blog-cta a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid #a2141a;
+      color: #fff;
+      background: #a2141a;
+      font-weight: 700;
+    }
+
+    .blog-cta a.secondary {
+      color: #a2141a;
+      background: #fff;
+    }
+
+    .blog-cta a:hover,
+    .blog-cta a:focus {
+      background: #7f0f19;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .single-feature {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .single-feature .feature-note {
+      max-width: 860px;
+    }
+
+    @media (max-width: 900px) {
+      .blog-grid,
+      .note-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Akshay Singhal</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="blogs.html" aria-current="page">Blogs</a>
+        <a href="news.html">News</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <span class="blog-kicker">Research Notes</span>
+      <h1>Visual explainers on floods, impacts, AI, and decision support.</h1>
+      <p>Short research notes that translate technical ideas in hydrology and disaster impact intelligence into clear, visual, and practical explanations.</p>
+    </section>
+
+    <section class="blog-shell">
+      <div class="blog-grid single-feature">
+        <article class="feature-note">
+          <span class="note-status">Research note</span>
+          <h2><a href="blog-impact-based-flood-forecasting.html">What Is Impact-Based Flood Forecasting?</a></h2>
+          <p>A research explainer on moving from rainfall, streamflow, and flood depth toward forecasts that describe who may be affected, what may be disrupted, and what actions can reduce harm.</p>
+          <div class="concept-flow" aria-label="Impact-based forecasting concept flow">
+            <span>Hazard</span>
+            <span>Exposure</span>
+            <span>Vulnerability</span>
+            <span>Impact</span>
+            <span>Action</span>
+          </div>
+          <div class="blog-cta">
+            <a href="blog-impact-based-flood-forecasting.html">Read the Note</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Akshay Singhal</p>
+      <p><a href="publications.html">Publications</a></p>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+
+
